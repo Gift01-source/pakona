@@ -13,6 +13,7 @@ import ResetPassword from './pages/ResetPassword';
 import Payment from './pages/Payment';
 import Messages from './pages/Messages';
 import Home from './pages/Home';
+import TutorSearch from './pages/TutorSearch';
 
 function App() {
   useEffect(() => {
@@ -51,6 +52,7 @@ function App() {
         <Route path="/book-session" element={<BookSession />} /> 
         <Route path="/tutor-sessions" element={<TutorSessions />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/tutor-search" element={<TutorSearch />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>

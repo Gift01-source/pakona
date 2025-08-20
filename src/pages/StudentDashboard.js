@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const API = axios.create({
   baseURL: 'http://localhost:3000/api',
@@ -43,8 +44,12 @@ function StudentDashboard() {
             placeholder="Search tutors by name or subject..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full md:w-1/2 p-3 border border-gray-300 rounded shadow"
-          />
+            className="w-full md:w-1/2 p-3 border border-gray-300 rounded shadow"/>
+            <div style={{marginBottom:20}}>
+              <Link to="/TutorSeach" style={{color:'blue'}}>
+                Find Tutors
+              </Link>
+              </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

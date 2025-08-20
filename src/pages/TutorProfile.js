@@ -13,7 +13,7 @@ function TutorProfile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/tutors/1'); // Replace `1` with dynamic tutor ID
+        const response = await axios.get('http://localhost:3000/api/tutors/'); // Replace `1` with dynamic tutor ID
         setProfile(response.data);
       } catch (error) {
         console.error('Error fetching profile:', error);
@@ -33,7 +33,7 @@ function TutorProfile() {
 
   const handleUpdateProfile = async () => {
     try {
-      await axios.put('http://localhost:3000/api/tutors/1', profile); // Replace `1` with dynamic tutor ID
+      await axios.put('http://localhost:3000/api/tutors/', profile); // Replace `1` with dynamic tutor ID
       alert('Profile updated successfully!');
     } catch (error) {
       console.error('Error updating profile:', error);

@@ -3,9 +3,9 @@ import Navbar from '../components/Navbar';
 
 function StudentProfile() {
   const [profile, setProfile] = useState({
-    name: 'Jane Smith',
-    email: 'jane@example.com',
-    goals: 'Improve algebra skills',
+    name: '',
+    email: '',
+    goals: '',
   });
 
   const handleChange = (e) => {
@@ -22,10 +22,10 @@ function StudentProfile() {
     <div>
       <Navbar role="student" />
       <div className="min-h-screen bg-blue-50 p-6 max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Student Profile</h1>
+        <h1 className="text-3xl font-bold mb-6">Your Profile</h1>
 
         <div className="bg-white p-6 rounded shadow-md">
-          <label className="block mb-2 font-semibold">Name</label>
+          <label className="block mb-2 font-semibold"> Your Name</label>
           <input
             type="text"
             name="name"
@@ -43,7 +43,7 @@ function StudentProfile() {
             className="w-full p-2 border rounded mb-4"
           />
 
-          <label className="block mb-2 font-semibold">Learning Goals</label>
+          <label className="block mb-2 font-semibold">What do yo want to learn?</label>
           <textarea
             name="goals"
             value={profile.goals}

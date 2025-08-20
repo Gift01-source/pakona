@@ -5,19 +5,19 @@ const initialSessions = [
   // sample session for demo, in real app fetch from backend
   {
     id: 1,
-    studentName: 'Jane Smith',
-    date: '2025-05-25',
+    studentName: '',
+    date: '',
     time: '15:00',
-    topic: 'Algebra Basics',
-    status: 'pending',
+    topic: '',
+    status: '',
   },
   {
     id: 2,
-    studentName: 'Mike Brown',
-    date: '2025-05-26',
-    time: '10:00',
-    topic: 'Physics - Newton Laws',
-    status: 'approved',
+    studentName: '',
+    date: '',
+    time: '',
+    topic: '',
+    status: '',
   },
 ];
 
@@ -48,7 +48,7 @@ function TutorSessions() {
                   <p><strong>Student:</strong> {session.studentName}</p>
                   <p><strong>Date:</strong> {session.date}</p>
                   <p><strong>Time:</strong> {session.time}</p>
-                  <p><strong>Topic:</strong> {session.topic}</p>
+                  <p><strong>Topic and Subject:</strong> {session.topic}</p>
                   <p><strong>Status:</strong> 
                     <span 
                       className={

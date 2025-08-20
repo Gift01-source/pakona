@@ -1,12 +1,72 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Text, View, ScrollView,Stylesheet,ActivityIndicator } from 'react';
 import axios from 'axios';
 
-const Messages = () => {
+
+const Messages = ({ userId }) => {
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchMessages = async () => {
+    axios.get(`http://localhost:3000/api/messages/${userId}`)
+      .then((response) => {
+        setMessages(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching messges:', error);
+        setLoading(false);
+      });
+    },[userId]);
+
+    if(loading) {
+      return <ActivityIndicator size="large" color="0000" style={{marginTop:40}}/>;
+    }
+
+    return (
+      <ScrollView style={ styles.container }>
+        <Text style={styles.header}>Messages</Text>
+        {messages.map(msg=>(
+          <View key={msg.id} style={styles.messageBox}>
+            <Text style={styles.sender}>{msg.sender_id===userId?'You': `User ${msg.sender_id}`}:</Text>
+            <Text style={styles.message}>{msg.message}</Text>
+            <Text style={styles.time}>{new Date(msg.timestamp).toLocaleString()}</Text>
+          </View>
+        ))}
+      </ScrollView>
+    );
+  };
+
+    
+const styles = Stylesheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#fff',
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  messageBox: {
+    padding: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  sender: {
+    fontWeight: 'bold',
+  },
+  message: {
+    marginVertical: 4,
+  },
+  time: {
+    fontSize: 12,
+    color: '#999',
+  },
+});
+
+export default Messages;
+   /*{/* const fetchMessages = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/messages');
         setMessages(response.data);
@@ -49,6 +109,5 @@ const Messages = () => {
       <button onClick={handleSendMessage}>Send</button>
     </div>
   );
-};
+};*/
 
-export default Messages;

@@ -1,7 +1,8 @@
 
-import React, { useState, useEffect } from 'react';
+import React,{ useState, useEffect, View, StyleSheet } from 'react';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import Messages from './Messages.js';
 
 // Create an axios instance for your API
 const API = axios.create({
@@ -9,10 +10,11 @@ const API = axios.create({
   withCredentials: true,
 });
 
-function TutorDashboard() {
+function TutorDashboard({route}) {
   const [searchTerm, setSearchTerm] = useState('');
   const [students, setStudents] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
+  const userId = route.params?.userId; // Get userId from route params
 
   useEffect(() => {
     // Fetch registered students from backend
@@ -30,6 +32,9 @@ function TutorDashboard() {
   const filteredStudents = students.filter((student) =>
     `${student.name} ${student.email || ''}`.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  
+  
 
   return (
     <div>
@@ -49,6 +54,9 @@ function TutorDashboard() {
             className="w-full md:w-1/2 p-3 border border-gray-300 rounded shadow"
           />
         </div>
+        <View style={styles.container}>
+          <Messages userId= {userId} />
+        </View>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Upcoming Sessions */}
@@ -85,4 +93,22 @@ function TutorDashboard() {
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#f0f0f0',
+  },
+  messageContainer: {
+    marginBottom: 20,
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
+});
 export default TutorDashboard;
