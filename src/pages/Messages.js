@@ -26,7 +26,7 @@ const Messages = ({ userId }) => {
   }, [userId]);
 
   if (loading) {
-    return <ActivityIndicator size="large" color="                                  
+    return <ActivityIndicator size="large" color=0000"                                  
   }
 
   return (
