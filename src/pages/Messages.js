@@ -1,7 +1,7 @@
 
-import React, { useState, useEffect } from ''react'';
-import { Text, View, ScrollView, StyleSheet, ActivityIndicator } from ''react-native'';
-import axios from ''axios'';
+import React, { useState, useEffect } from 'react';
+import { Text, View, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
+import axios from 'axios';
 
 const Messages = ({ userId }) => {
   const [messages, setMessages] = useState([]);
